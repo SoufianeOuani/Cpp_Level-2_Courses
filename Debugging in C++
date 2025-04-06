@@ -1,75 +1,80 @@
-في **تصحيح الأخطاء (Debugging)** في C++، هناك ثلاث أوامر رئيسية للتحكم في سير تنفيذ الكود أثناء عملية التنقيح باستخدام أدوات التصحيح مثل **GDB (GNU Debugger)** أو بيئات التطوير مثل **Visual Studio Debugger** أو **CLion Debugger**. هذه الأوامر هي:
 
 ---
 
-### 1. **Step Into (F11)**
-   - يستخدم للدخول إلى داخل **الدالة (Function)** التي يتم استدعاؤها.
-   - إذا كان السطر الحالي يحتوي على استدعاء دالة، فسيتم نقل التنفيذ إلى داخل تلك الدالة للسماح بمراقبة خطوات تنفيذها.
-   - إذا لم يكن هناك استدعاء دالة، فسيتم تنفيذ السطر الحالي والانتقال إلى السطر التالي.
+## 🔍 **Debugging in C++: Step Into, Step Over, Step Out**
 
-   **مثال:**
-   ```cpp
-   #include <iostream>
-   void sayHello() {
-       std::cout << "Hello, World!" << std::endl;
-   }
-   int main() {
-       sayHello(); // إذا ضغطت "Step Into"، ستدخل إلى دالة sayHello().
-       return 0;
-   }
-   ```
-   عند استخدام **Step Into** على `sayHello();`، سينتقل التصحيح إلى داخل الدالة `sayHello()`.
+When you're debugging your C++ code (using tools like **GDB**, **Visual Studio**, **CLion**, etc.), these three commands help you control the flow of execution:
 
 ---
 
-### 2. **Step Over (F10)**
-   - ينفذ السطر الحالي بالكامل **دون الدخول إلى أي دالة يتم استدعاؤها فيه**.
-   - إذا كان السطر يحتوي على استدعاء دالة، فإنه يقوم بتنفيذها بالكامل وينتقل إلى السطر التالي دون الدخول داخلها.
+### 🔹 1. **Step Into (F11)**
 
-   **مثال:**
-   ```cpp
-   int sum(int a, int b) {
-       return a + b;
-   }
-   int main() {
-       int result = sum(5, 10); // عند الضغط على "Step Over"، سيتم تنفيذ الدالة sum() ولكن لن ندخل داخلها.
-       std::cout << "Result: " << result << std::endl;
-       return 0;
-   }
-   ```
-   إذا استخدمت **Step Over** على `sum(5, 10);`، سيتم تنفيذ الدالة `sum()` والانتقال إلى السطر التالي (`std::cout << "Result: " << result << std::endl;`) مباشرة دون الدخول إلى `sum()`.
+- **What it does:** Enters into the function call on the current line.
+- If the current line includes a function call, it takes you **inside** that function to debug it line by line.
+- If there's no function call, it just goes to the next line.
 
----
-
-### 3. **Step Out (Shift + F11)**
-   - يخرج من الدالة الحالية ويعيد التحكم إلى الدالة التي استدعتها.
-   - يستخدم عند الدخول إلى دالة باستخدام **Step Into** ثم الرغبة في الخروج منها بسرعة دون تتبع باقي تعليماتها.
-
-   **مثال:**
-   ```cpp
-   void sayHello() {
-       std::cout << "Hello, World!" << std::endl; // إذا كنت هنا وضغطت "Step Out"، ستعود إلى الدالة main().
-   }
-   int main() {
-       sayHello();
-       std::cout << "Back in main!" << std::endl;
-       return 0;
-   }
-   ```
-   إذا كنت داخل `sayHello()` وضغطت **Step Out**، سيتم تنفيذ باقي أوامر الدالة والخروج منها مباشرة إلى `main()`.
+**Example:**
+```cpp
+#include <iostream>
+void sayHello() {
+    std::cout << "Hello, World!" << std::endl;
+}
+int main() {
+    sayHello(); // Step Into goes inside sayHello()
+    return 0;
+}
+```
+If you press **Step Into** on `sayHello();`, the debugger jumps inside the `sayHello()` function.
 
 ---
 
-### **متى تستخدم كل خطوة؟**
-| الأمر        | متى يستخدم؟ |
-|-------------|------------|
-| **Step Into** | عندما تريد تتبع تنفيذ الدوال خطوة بخطوة ومعرفة كيفية عملها من الداخل. |
-| **Step Over** | عندما لا تحتاج للدخول إلى تفاصيل تنفيذ الدالة، ولكن فقط تريد تنفيذها والانتقال للسطر التالي. |
-| **Step Out** | عندما تكون داخل دالة وتريد الخروج منها بسرعة إلى الدالة المستدعية. |
+### 🔹 2. **Step Over (F10)**
+
+- **What it does:** Executes the current line completely but **does not go inside** any function calls.
+- If the line has a function call, it runs the function and moves to the next line.
+
+**Example:**
+```cpp
+int sum(int a, int b) {
+    return a + b;
+}
+int main() {
+    int result = sum(5, 10); // Step Over skips going inside sum()
+    std::cout << "Result: " << result << std::endl;
+    return 0;
+}
+```
+Using **Step Over** on `sum(5, 10);` runs the `sum` function and jumps to the next line without stepping into `sum()`.
 
 ---
 
-### **خلاصة**
-- **Step Into (F11):** دخول إلى داخل الدالة التي يتم استدعاؤها.
-- **Step Over (F10):** تنفيذ السطر الحالي بالكامل دون الدخول إلى أي دوال.
-- **Step Out (Shift + F11):** الخروج من الدالة الحالية إلى الدالة التي استدعتها.
+### 🔹 3. **Step Out (Shift + F11)**
+
+- **What it does:** Finishes executing the current function and returns to the caller.
+- Useful when you’ve already stepped into a function and want to quickly exit back.
+
+**Example:**
+```cpp
+void sayHello() {
+    std::cout << "Hello, World!" << std::endl; // Step Out from here goes back to main()
+}
+int main() {
+    sayHello();
+    std::cout << "Back in main!" << std::endl;
+    return 0;
+}
+```
+If you're inside `sayHello()` and press **Step Out**, the debugger will complete the function and jump back to `main()`.
+
+---
+
+### 📌 Summary Table:
+
+| Command      | Shortcut       | What it Does                          |
+|--------------|----------------|---------------------------------------|
+| **Step Into** | `F11`          | Goes **inside** the function call     |
+| **Step Over** | `F10`          | Executes line **without entering** functions |
+| **Step Out**  | `Shift + F11`  | **Exits** the current function        |
+
+---
+
