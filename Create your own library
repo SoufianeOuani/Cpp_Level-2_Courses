@@ -1,0 +1,106 @@
+Creating your **own library in C++** is a great way to organize and reuse your code. You can create either:
+
+- A **static library** (`.lib` or `.a`)
+- A **dynamic/shared library** (`.dll` or `.so`)
+
+But first, let's start with **basic steps** for creating a **simple static library** and using it in another program.
+
+---
+
+## ✅ Step-by-Step: Create Your Own Static Library in C++
+
+### 🧩 1. **Write Your Library Header File**
+Create a header file, e.g. `mymath.h`:
+
+```cpp
+// mymath.h
+#ifndef MYMATH_H
+#define MYMATH_H
+
+int add(int a, int b);
+int subtract(int a, int b);
+
+#endif
+```
+
+---
+
+### 🧠 2. **Write Your Library Implementation File**
+Create the implementation, e.g. `mymath.cpp`:
+
+```cpp
+// mymath.cpp
+#include "mymath.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+```
+
+---
+
+### 🧱 3. **Compile to a Static Library**
+Use a C++ compiler to compile the `.cpp` file into a **static library**:
+
+#### ✅ On Linux:
+```bash
+g++ -c mymath.cpp       # creates mymath.o
+ar rcs libmymath.a mymath.o   # creates static library: libmymath.a
+```
+
+#### ✅ On Windows (MinGW):
+```bash
+g++ -c mymath.cpp       # creates mymath.o
+ar rcs libmymath.a mymath.o   # static library
+```
+
+---
+
+### 📦 4. **Use the Library in Your Main Program**
+
+Create a file `main.cpp`:
+
+```cpp
+// main.cpp
+#include <iostream>
+#include "mymath.h"
+
+int main() {
+    std::cout << "Sum: " << add(5, 3) << std::endl;
+    std::cout << "Difference: " << subtract(5, 3) << std::endl;
+    return 0;
+}
+```
+
+---
+
+### 🛠️ 5. **Compile the Main Program with the Library**
+
+#### ✅ On Linux:
+```bash
+g++ main.cpp -L. -lmymath -o main
+```
+
+- `-L.` tells the compiler to look in the current directory for libraries.
+- `-lmymath` links with `libmymath.a`.
+
+#### ✅ On Windows (MinGW):
+```bash
+g++ main.cpp libmymath.a -o main.exe
+```
+
+---
+
+### ✅ Run Your Program:
+```bash
+./main
+```
+
+---
+
+## 📌 What About Dynamic Libraries?
+If you're interested, I can also show you how to make `.so` (Linux) or `.dll` (Windows) files and load them at runtime.
