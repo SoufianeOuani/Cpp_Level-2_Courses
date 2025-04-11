@@ -101,6 +101,3 @@ g++ main.cpp libmymath.a -o main.exe
 ```
 
 ---
-
-## 📌 What About Dynamic Libraries?
-If you're interested, I can also show you how to make `.so` (Linux) or `.dll` (Windows) files and load them at runtime.
