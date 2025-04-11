@@ -1,2 +1,2 @@
 # Cpp_Level-2_Courses
-This repository i about some Cpp courses.
+This repository is about some Cpp courses.
