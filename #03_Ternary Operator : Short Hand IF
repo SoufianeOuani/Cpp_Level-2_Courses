@@ -27,5 +27,3 @@ if (a > b) {
 ### 📝 Note:
 - It's best used when the logic is simple.
 - For more complex logic, stick with full `if` statements to keep your code readable.
-
-Want to see how to use it with functions or inside loops too?
