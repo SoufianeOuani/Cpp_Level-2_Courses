@@ -1,0 +1,80 @@
+أكيد سفيان! 😊  
+لو كنت باغي **تتحقق واش القيمة عدد** في C++، فطريقة التحقق كتختلف حسب النوع ديال الإدخال (string ولا int ولا input من المستخدم).
+
+---
+
+### ✅ الحالة 1: التحقق من `string` واش كيمثل عدد
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+bool isNumber(const string& str) {
+    for (char c : str) {
+        if (!isdigit(c)) return false;
+    }
+    return !str.empty();
+}
+
+int main() {
+    string input = "12345";
+    if (isNumber(input)) {
+        cout << "Valid number!" << endl;
+    } else {
+        cout << "Not a number!" << endl;
+    }
+}
+```
+
+---
+
+### ✅ الحالة 2: التحقق من إدخال المستخدم
+
+```cpp
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+bool isValidInteger(const string& str) {
+    int number;
+    istringstream iss(str);
+    return (iss >> number) && (iss.eof());
+}
+
+int main() {
+    string input;
+    cout << "Enter a number: ";
+    cin >> input;
+
+    if (isValidInteger(input)) {
+        cout << "That's a valid integer!" << endl;
+    } else {
+        cout << "Invalid input!" << endl;
+    }
+}
+```
+
+---
+
+### ✅ الحالة 3: باستخدام `try-catch` (C++17 فما فوق)
+لو كنت خدام بـ `C++17` أو أكثر، تقدر تستعمل `std::stoi` و `try-catch`:
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isNumber(const string& str) {
+    try {
+        stoi(str);  // يحاول تحويل string إلى int
+        return true;
+    } catch (...) {
+        return false;
+    }
+}
+```
+
+---
