@@ -1,0 +1,99 @@
+Awesome question! Let’s break down **call stack** and **call hierarchy** — two key concepts for understanding how functions work in memory and how they interact in a program.
+
+---
+
+## 🧠 1. What Is the **Call Stack**?
+
+The **call stack** is a special part of memory that keeps track of **function calls** in your program.
+
+Every time a function is called:
+- A new **stack frame** is created for it.
+- That frame stores:
+  - The function’s parameters
+  - Local variables
+  - The return address (where to go back after the function ends)
+
+When a function finishes:
+- Its frame is removed (popped) from the stack
+- Control returns to the caller
+
+---
+
+### 📦 Example (C++ code):
+
+```cpp
+void c() {
+    cout << "In function C" << endl;
+}
+
+void b() {
+    c();
+    cout << "Back in B" << endl;
+}
+
+void a() {
+    b();
+    cout << "Back in A" << endl;
+}
+
+int main() {
+    a();
+    return 0;
+}
+```
+
+---
+
+### 🔄 What happens in the **call stack**?
+
+1. `main()` is called → `main()` frame pushed
+2. `a()` is called → `a()` frame pushed
+3. `b()` is called → `b()` frame pushed
+4. `c()` is called → `c()` frame pushed
+5. `c()` ends → `c()` frame popped
+6. Back to `b()` → then `b()` ends → popped
+7. Back to `a()` → then `a()` ends → popped
+8. Back to `main()` → done!
+
+> Stack unwinds in **Last-In, First-Out (LIFO)** order.
+
+---
+
+## 🧭 2. What Is the **Call Hierarchy**?
+
+**Call hierarchy** is a **tree-like structure** that shows **which function calls which**.
+
+It’s more about the **relationship** between functions, not memory.
+
+Using the same example:
+
+```
+main()
+└── a()
+    └── b()
+        └── c()
+```
+
+- You can visualize this as a map of calls
+- Used in IDEs like Visual Studio, CLion, or VS Code to **navigate** code easily
+
+---
+
+### 🆚 Call Stack vs Call Hierarchy
+
+| Feature           | Call Stack                     | Call Hierarchy                 |
+|-------------------|-------------------------------|-------------------------------|
+| Purpose           | Tracks **runtime execution**   | Shows **code structure**      |
+| Type              | Dynamic (changes during run)   | Static (fixed from code)      |
+| Format            | Stack (LIFO)                   | Tree (caller → callee)        |
+| Used for          | Debugging, memory management   | Code analysis, refactoring    |
+
+---
+
+### 🧠 Real-Life Analogy
+
+- **Call Stack** = A **pile of dishes**: You wash (call) a dish, stack it on top. You always remove (return) the top one first.
+- **Call Hierarchy** = A **family tree**: You see who calls who, but it's not about timing or memory.
+
+---
+
