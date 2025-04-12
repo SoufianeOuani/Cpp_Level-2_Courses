@@ -1,0 +1,97 @@
+Perfect! Let’s dive into **Function Overloading** in C++ — a powerful feature that lets you write multiple functions with the **same name**, but with **different parameters**.
+
+---
+
+## 🔁 What Is Function Overloading?
+
+Function Overloading = **Same function name**, but different:
+- Number of parameters
+- Types of parameters
+- Order of parameters (types)
+
+> 📌 The compiler chooses which version to call based on the arguments you pass.
+
+---
+
+### ✅ Example 1: Overloading with Different Parameters
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+int main() {
+    cout << add(2, 3) << endl;        // 5   → int version
+    cout << add(2.5, 3.5) << endl;    // 6.0 → double version
+    cout << add(1, 2, 3) << endl;     // 6   → three ints version
+    return 0;
+}
+```
+
+---
+
+### ✅ Example 2: Overloading with Different Types
+
+```cpp
+void display(int x) {
+    cout << "Integer: " << x << endl;
+}
+
+void display(string s) {
+    cout << "String: " << s << endl;
+}
+
+void display(char c) {
+    cout << "Char: " << c << endl;
+}
+```
+
+---
+
+### ✅ Example 3: Overloading by Parameter Order
+
+```cpp
+void info(int id, string name) {
+    cout << "ID: " << id << ", Name: " << name << endl;
+}
+
+void info(string name, int id) {
+    cout << "Name: " << name << ", ID: " << id << endl;
+}
+```
+
+---
+
+### ⚠️ Function Overloading Rules
+
+1. ✅ Functions must differ in **type, number, or order** of parameters.
+2. ❌ **Return type alone is not enough** to overload.
+
+```cpp
+int test(int x);
+double test(int x);  // ❌ Error: Same name, same parameter list
+```
+
+3. ✅ Overloading works with **default parameters**, but be careful — it can lead to ambiguity.
+
+---
+
+### 🧠 Why Use It?
+
+- Makes code more **readable** and **organized**
+- Helps create **general-purpose functions** with the same name
+- Used heavily in **OOP, constructors**, and **operator overloading**
+
+---
+
