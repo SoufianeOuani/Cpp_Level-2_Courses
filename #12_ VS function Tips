@@ -1,0 +1,89 @@
+Nice! Here are some super handy **function-related tips** for **Visual Studio (VS)** that will make your C++ (or any language) coding smoother, faster, and smarter:
+
+---
+
+## 💡 TOP FUNCTION TIPS IN VISUAL STUDIO
+
+### 1. 🧭 **View Call Hierarchy**
+- **Shortcut:** `Ctrl + K, Ctrl + T` (or right-click → *View Call Hierarchy*)
+- 📌 Shows **who calls a function** and **what functions it calls** — super useful for debugging and code exploration.
+
+---
+
+### 2. 🧠 **Go to Definition / Declaration**
+- **F12** → Go to definition (function body)
+- **Alt + F12** → *Peek definition* (inline view)
+- **Ctrl + F12** → Go to declaration (prototype)
+
+---
+
+### 3. 📘 **Parameter Info While Typing**
+- When calling a function, VS shows the parameter list:
+  ```cpp
+  myFunction(|    ← it shows: int a, double b = 0
+  ```
+- This is great for **default parameters** and overloaded functions.
+
+---
+
+### 4. 🔁 **Function Overload Picker**
+- If a function is overloaded, use the **arrow keys** while typing to scroll through overloads.
+- VS will show you all available signatures.
+
+---
+
+### 5. 🔍 **Find All References**
+- **Shortcut:** `Shift + F12`
+- Shows every place the function is used in your project.
+- Can be filtered by file, type of usage (read/write), etc.
+
+---
+
+### 6. 🔂 **Code Snippets for Functions**
+- Type `fn` then press **Tab Tab** to generate a function snippet:
+  ```cpp
+  void MyFunction()
+  {
+      
+  }
+  ```
+
+You can also customize your own snippets if you write certain patterns often.
+
+---
+
+### 7. 🎯 **Quick Actions (Lightbulb)**
+- When you hover over or click a squiggly line, click the lightbulb 💡 to:
+  - Generate function declarations/definitions
+  - Add missing `#includes`
+  - Fix parameter types
+  - Rename across project
+
+---
+
+### 8. 🔁 **Toggle Between Header & Source**
+- **Ctrl + K, Ctrl + O** → Switch between `.h` and `.cpp` files with the same name.
+- Works great when you're declaring functions in headers and defining them in cpp.
+
+---
+
+### 9. ⚙️ **Function Outline**
+- Use the **Class View** or **Outline** window to see all functions in your current file.
+- Great for navigating large classes or utilities.
+
+---
+
+### 10. 🧪 **Run/Debug Single Function (unit-style)**
+If you're testing just one function:
+- Right-click inside it → *Run Test* (if it's a test)
+- Or set a breakpoint and use **F5** or **F10/F11** to step through just that code
+
+---
+
+### 🧩 Bonus: Extensions That Help
+- **ReSharper C++**: Supercharges navigation and refactoring
+- **CodeMaid**: For cleaning up unused functions
+- **C++ Intellisense Enhancer**: Improves parameter hints
+
+---
+
