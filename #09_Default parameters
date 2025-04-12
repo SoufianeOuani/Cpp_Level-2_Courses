@@ -1,0 +1,99 @@
+Sure! Here are some **useful tips** about **default parameters using `int` type** in C++ — all with examples and clear explanations:
+
+---
+
+### ✅ Tip 1: Use Default Parameters to Simplify Overloads
+
+Instead of writing multiple overloads:
+
+```cpp
+int multiply(int a, int b) {
+    return a * b;
+}
+
+int multiply(int a) {
+    return a * 1; // default multiplier
+}
+```
+
+👉 Use this:
+
+```cpp
+int multiply(int a, int b = 1) {
+    return a * b;
+}
+```
+
+✔️ Now you can call:
+```cpp
+multiply(5);     // returns 5
+multiply(5, 10); // returns 50
+```
+
+---
+
+### ✅ Tip 2: Combine Required and Optional `int` Parameters
+
+Make the **most important parameters required** and the rest optional.
+
+```cpp
+int calculate(int base, int bonus = 0, int penalty = 0) {
+    return base + bonus - penalty;
+}
+```
+
+✔️ Use as:
+```cpp
+calculate(100);             // 100
+calculate(100, 20);         // 120
+calculate(100, 20, 10);     // 110
+```
+
+---
+
+### ✅ Tip 3: Use Default `int` in Utility Functions
+
+For example, a power function:
+
+```cpp
+int power(int base, int exponent = 2) {
+    int result = 1;
+    for(int i = 0; i < exponent; i++)
+        result *= base;
+    return result;
+}
+```
+
+✔️ Use as:
+```cpp
+power(5);     // 25 (5^2)
+power(5, 3);  // 125 (5^3)
+```
+
+---
+
+### ✅ Tip 4: Cleaner Loops with Default Ranges
+
+```cpp
+void printRange(int start = 1, int end = 5) {
+    for(int i = start; i <= end; i++)
+        cout << i << " ";
+    cout << endl;
+}
+```
+
+✔️ Use as:
+```cpp
+printRange();         // 1 2 3 4 5
+printRange(3);        // 3 4 5
+printRange(2, 4);     // 2 3 4
+```
+
+---
+
+### ⚠️ Bonus Warning:
+
+Avoid using default parameters if the logic might **confuse the user**. Make sure the defaults **make sense** in every context.
+
+---
+
