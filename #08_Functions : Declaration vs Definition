@@ -1,0 +1,67 @@
+Great question! In **C++**, understanding the difference between **function declaration** and **function definition** is key to writing organized and modular code.
+
+---
+
+### 🔹 Function Declaration (also called **Function Prototype**)
+
+A **function declaration** tells the compiler **about the function’s name, return type, and parameters** — but it doesn’t include the body (the actual code that runs).
+
+🧠 It's like saying: “Hey compiler, there’s a function like this — I’ll define it later!”
+
+```cpp
+int add(int a, int b);  // Declaration
+```
+
+- Ends with a semicolon `;`
+- No body `{}` is present
+- Usually placed at the top of the file or in header files (`.h` or `.hpp`)
+
+---
+
+### 🔹 Function Definition
+
+A **function definition** provides the actual code (body) that runs when the function is called.
+
+```cpp
+int add(int a, int b) {  // Definition
+    return a + b;
+}
+```
+
+- Contains the full logic inside `{}`.
+- There is **no semicolon after the parentheses** — the body comes next.
+- Can be placed in `.cpp` files or below `main()` in small programs.
+
+---
+
+### ✅ Example with Both:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int add(int a, int b); // Declaration
+
+int main() {
+    cout << add(3, 4);  // Using the function
+    return 0;
+}
+
+int add(int a, int b) { // Definition
+    return a + b;
+}
+```
+
+---
+
+### 🧩 Summary Table
+
+| Feature            | Declaration                          | Definition                             |
+|--------------------|--------------------------------------|----------------------------------------|
+| Contains Body?     | ❌ No                                 | ✅ Yes                                  |
+| Ends with `;`?     | ✅ Yes                                | ❌ No (has `{}` instead)                |
+| Purpose            | Informs the compiler                 | Implements the function logic          |
+| Usual Location     | Header files / Top of `.cpp` files   | Source files / Bottom of `.cpp` files  |
+
+---
+
