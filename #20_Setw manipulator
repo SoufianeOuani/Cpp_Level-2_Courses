@@ -1,0 +1,78 @@
+Perfect! Now we’re getting into **C++-style formatting** with `cout` and **manipulators** like `setw`.
+
+---
+
+### 🔹 `setw` — Set Width (from `<iomanip>`)
+
+- `setw(n)` sets the **minimum width** of the next output field.
+- It’s only applied to the **next output item**.
+- If the value is **shorter**, it will be **padded with spaces** (by default, right-aligned).
+
+---
+
+### 🔸 Syntax
+
+```cpp
+#include <iostream>
+#include <iomanip> // for setw
+
+using namespace std;
+
+int main() {
+    int a = 42;
+
+    cout << setw(5) << a << endl;   // Output: "   42"
+    cout << setw(10) << "Hi" << endl; // Output: "        Hi"
+
+    return 0;
+}
+```
+
+---
+
+### 🔹 Useful with Tables
+
+```cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    cout << setw(10) << "Name" << setw(10) << "Score" << endl;
+    cout << setw(10) << "Alice" << setw(10) << 95 << endl;
+    cout << setw(10) << "Bob" << setw(10) << 88 << endl;
+
+    return 0;
+}
+```
+
+🟰 Output:
+```
+      Name     Score
+     Alice        95
+       Bob        88
+```
+
+---
+
+### 🔸 Combine with Other Manipulators
+
+You can also use:
+
+| Manipulator     | Description                     |
+|------------------|---------------------------------|
+| `left`          | Left-align the output            |
+| `right`         | Right-align the output (default) |
+| `setfill(ch)`   | Change padding character         |
+| `fixed`, `scientific` | For float formatting     |
+
+Example:
+
+```cpp
+cout << left << setw(10) << "Item" << right << setw(5) << 100 << endl;
+cout << setfill('-') << setw(10) << 42 << endl;  // "--------42"
+```
+
+---
+
