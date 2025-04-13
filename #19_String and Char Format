@@ -1,0 +1,63 @@
+Great! Let’s now go over how to format **strings** and **characters** using `printf` in C/C++.
+
+---
+
+### 🔹 Format Specifiers for Strings & Characters
+
+| Specifier | Type    | Description                         | Example Output |
+|-----------|---------|-------------------------------------|----------------|
+| `%c`      | `char`  | Prints a single character           | `A`            |
+| `%s`      | `char*` | Prints a string (null-terminated)   | `Hello`        |
+
+---
+
+### 🔸 Example
+
+```cpp
+#include <cstdio>
+
+int main() {
+    char ch = 'A';
+    const char* str = "Hello, world!";
+
+    printf("Character: %c\n", ch);
+    printf("String: %s\n", str);
+
+    return 0;
+}
+```
+
+---
+
+### 🔸 Width and Alignment
+
+You can format the output width, padding, and alignment:
+
+```c
+printf("%10s\n", "Hello");   // Right-aligned: "     Hello"
+printf("%-10s\n", "Hello");  // Left-aligned:  "Hello     "
+printf("%5c\n", 'A');        // Right-aligned: "    A"
+```
+
+---
+
+### 🔸 Limiting Number of Characters (with `%s`)
+
+```c
+printf("%.5s\n", "Programming");  // Output: "Progr" (only first 5 chars)
+```
+
+This is useful when printing strings with a max length.
+
+---
+
+### 🔸 Escape Characters (for both strings & chars)
+
+- `\n` → New line  
+- `\t` → Tab  
+- `\\` → Backslash  
+- `\"` → Double quote  
+- `\'` → Single quote  
+
+---
+
