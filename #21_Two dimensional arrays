@@ -1,0 +1,100 @@
+Two-dimensional arrays in C++ are used to store data in a table-like structure with rows and columns. They are essentially arrays of arrays. Here's a breakdown of how to declare, initialize, and use them:
+
+---
+
+### 🧠 **Syntax to Declare a 2D Array:**
+
+```cpp
+dataType arrayName[rows][columns];
+```
+
+🔹 Example:
+```cpp
+int matrix[3][4];  // 3 rows, 4 columns
+```
+
+---
+
+### 🛠️ **Initialization Methods**
+
+1. **Manual Initialization:**
+```cpp
+int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+```
+
+2. **Partial Initialization (rest are zeros):**
+```cpp
+int matrix[2][3] = {
+    {1},    // initializes [0][0] = 1, others = 0
+    {4}     // initializes [1][0] = 4, others = 0
+};
+```
+
+---
+
+### 🔁 **Accessing and Using 2D Arrays:**
+
+You can use **nested loops** to work with 2D arrays:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    for (int i = 0; i < 2; i++) {           // Rows
+        for (int j = 0; j < 3; j++) {       // Columns
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+### ✏️ **Input from User:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[2][2];
+
+    cout << "Enter 4 numbers:\n";
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    cout << "The 2x2 matrix is:\n";
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+### 📌 Notes:
+
+- All elements in a 2D array must be of the same data type.
+- The memory is stored **row-wise** in C++.
+
+---
