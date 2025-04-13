@@ -1,0 +1,61 @@
+Nice! Let’s dive into `printf` format specifiers for **floating-point numbers** in C/C++.
+
+---
+
+### 🔹 Floating-Point Format Specifiers in `printf`
+
+| Specifier | Description                                  | Example Output        |
+|-----------|----------------------------------------------|------------------------|
+| `%f`      | Fixed-point notation                         | `3.141593`             |
+| `%e`      | Scientific notation (lowercase `e`)          | `3.141593e+00`         |
+| `%E`      | Scientific notation (uppercase `E`)          | `3.141593E+00`         |
+| `%g`      | Auto (uses `%f` or `%e`, whichever is shorter) | `3.14159` or `1e+06`  |
+| `%G`      | Same as `%g` but with `E` instead of `e`     | `3.14159` or `1E+06`   |
+| `%a` (C99) | Hexadecimal floating-point (lowercase)       | `0x1.91eb86p+1`        |
+| `%A` (C99) | Hexadecimal floating-point (uppercase)       | `0X1.91EB86P+1`        |
+
+---
+
+### 🔸 Precision Control
+
+You can control how many digits appear **after the decimal point** like this:
+
+```c
+printf("%.2f", 3.14159);  // Output: 3.14
+printf("%.4e", 3.14159);  // Output: 3.1416e+00
+```
+
+---
+
+### 🔸 Width and Padding
+
+You can specify **minimum width** and **zero-padding**:
+
+```c
+printf("%10.2f", 3.14);  // Output: "      3.14"
+printf("%010.2f", 3.14); // Output: "0000003.14"
+```
+
+---
+
+### 🔸 Example
+
+```cpp
+#include <cstdio>
+
+int main() {
+    float f = 3.1415926535;
+    double d = 123456.789;
+
+    printf("Float (%%f): %f\n", f);
+    printf("Float (%%.2f): %.2f\n", f);
+    printf("Double (%%e): %e\n", d);
+    printf("Double (%%g): %g\n", d);
+    printf("Hex float (%%a): %a\n", d);
+
+    return 0;
+}
+```
+
+---
+
