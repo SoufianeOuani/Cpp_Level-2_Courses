@@ -1,0 +1,96 @@
+In C++, integers can be stored using several **integer data types**, depending on how much memory and range you need. Here's a quick guide:
+
+---
+
+### 🔹 Common Integer Types in C++
+
+| Type            | Size (usually) | Range (Signed)              | Description                            |
+|-----------------|----------------|------------------------------|----------------------------------------|
+| `int`           | 4 bytes        | -2,147,483,648 to 2,147,483,647 | Most commonly used integer type        |
+| `short`         | 2 bytes        | -32,768 to 32,767            | Smaller integers (less memory)         |
+| `long`          | 4 or 8 bytes   | Platform dependent           | Longer range than `int` (sometimes same)|
+| `long long`     | 8 bytes        | -9 quintillion to 9 quintillion | Very large integers                    |
+| `unsigned int`  | 4 bytes        | 0 to 4,294,967,295           | Only positive values (no negatives)    |
+
+> **Note**: Sizes can vary slightly depending on your system and compiler, but these are the usual sizes on modern systems.
+
+---
+
+### 🔸 Example in Code
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = -10;
+    unsigned int b = 10;
+    short c = 30000;
+    long long d = 123456789012345;
+
+    cout << "int: " << a << endl;
+    cout << "unsigned int: " << b << endl;
+    cout << "short: " << c << endl;
+    cout << "long long: " << d << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 🔸 Integer Literals
+You can also use different bases:
+
+- **Decimal (base 10)**: `int a = 42;`
+- **Octal (base 8)**: `int b = 052;`  (starts with 0)
+- **Hexadecimal (base 16)**: `int c = 0x2A;`
+- **Binary (since C++14)**: `int d = 0b101010;`
+
+All of these will give the value `42`.
+
+---
+
+Ah gotcha! You’re asking about the **format specifiers** used with `printf` in C or C++ to print integers. Here's a quick breakdown:
+
+---
+
+### 🔹 Common `printf` Integer Format Specifiers
+
+| Specifier | Type            | Example Output | Notes                            |
+|-----------|------------------|----------------|----------------------------------|
+| `%d` or `%i` | `int` (signed)       | `42`            | Most commonly used for integers |
+| `%u`     | `unsigned int`   | `42`            | For unsigned integers            |
+| `%ld`    | `long int`       | `1000000000`    | For long                         |
+| `%lu`    | `unsigned long`  | `1000000000`    | For unsigned long                |
+| `%lld`   | `long long int`  | `9223372036854775807` | For very big numbers       |
+| `%llu`   | `unsigned long long` | `18446744073709551615` | For big positive numbers |
+| `%x`     | `unsigned int` (hex) | `2a`        | Hexadecimal (lowercase)          |
+| `%X`     | `unsigned int` (hex) | `2A`        | Hexadecimal (uppercase)          |
+| `%o`     | `unsigned int` (octal) | `52`      | Octal                            |
+
+---
+
+### 🔸 Example
+
+```cpp
+#include <cstdio>
+
+int main() {
+    int a = 42;
+    unsigned int b = 42;
+    long long c = 123456789012345LL;
+
+    printf("Signed int: %d\n", a);
+    printf("Unsigned int: %u\n", b);
+    printf("Long long int: %lld\n", c);
+    printf("Hexadecimal: %x\n", a);
+    printf("Octal: %o\n", a);
+
+    return 0;
+}
+```
+
+---
+
+Let me know if you also want the format specifiers for `float`, `double`, or characters/strings!
