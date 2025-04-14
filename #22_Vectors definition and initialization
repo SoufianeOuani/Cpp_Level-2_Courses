@@ -1,0 +1,36 @@
+In C++, vectors are dynamic arrays provided by the Standard Template Library (STL). You can declare and initialize them in several ways, depending on your needs.
+
+1. Declaration (Empty Vector)
+
+#include <vector>
+std::vector<int> v; // Declares an empty vector of integers
+
+2. Initialization with Values
+
+Fixed size, default value (0)
+
+
+std::vector<int> v(5); // [0, 0, 0, 0, 0]
+
+Fixed size, custom initial value
+
+
+std::vector<int> v(5, 10); // [10, 10, 10, 10, 10]
+
+Initialize using initializer list
+
+
+std::vector<int> v = {1, 2, 3, 4, 5};
+
+Copy from another vector
+
+
+std::vector<int> v1 = {1, 2, 3};
+std::vector<int> v2(v1); // v2 = [1, 2, 3]
+
+Using iterators (copy a range)
+
+
+std::vector<int> v1 = {1, 2, 3, 4, 5};
+std::vector<int> v2(v1.begin(), v1.begin() + 3); // [1, 2, 3]
+
