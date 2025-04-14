@@ -1,0 +1,79 @@
+جميل! 👍 استخدام **`vector of struct`** هو طريقة قوية ومنظمة لتخزين مجموعة من الكائنات (objects) التي تحتوي على أكثر من خاصية.
+
+---
+
+## ✅ **مثال بسيط: `vector` يحتوي على `struct`**
+
+### 📦 1. تعريف الـ `struct`:
+```cpp
+struct Person {
+    string name;
+    int age;
+};
+```
+
+---
+
+### 📋 2. استخدام `vector<Person>`:
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Person {
+    string name;
+    int age;
+};
+
+int main() {
+    vector<Person> people;
+
+    // إضافة عناصر
+    people.push_back({"Ali", 25});
+    people.push_back({"Sara", 30});
+
+    // إدخال عنصر من المستخدم
+    Person p;
+    cout << "Enter name and age: ";
+    cin >> p.name >> p.age;
+    people.push_back(p);
+
+    // عرض كل العناصر
+    for (const Person& person : people) {
+        cout << "Name: " << person.name << ", Age: " << person.age << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+### 🧠 ملاحظات:
+
+- تقدر تمرر `struct` مباشرة داخل `push_back()` مثل:  
+  ```cpp
+  people.push_back({"John", 22});
+  ```
+
+- أو تنشئ كائن مؤقت من `struct` وتضيفه:
+  ```cpp
+  Person p = {"Ahmed", 27};
+  people.push_back(p);
+  ```
+
+---
+
+### 🔄 تعديل عنصر:
+
+```cpp
+people[0].age = 26;  // تعديل عمر أول شخص
+```
+
+---
+
+### ❓لو تحب مثال عملي أكثر، مثل:
+- قائمة طلبة
+- جدول أعمال
+- إدارة منتجات
