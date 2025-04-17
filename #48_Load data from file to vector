@@ -1,0 +1,149 @@
+أهااا! دخلنا فالعميق 😎  
+دابا نشوفو كيفاش نـ⏬ـحملو بيانات من ملف وندخلوها فـ **`vector`** — وهذا كيستعمل بزاف فـ المشاريع الحقيقية 💪
+
+---
+
+# 🔷 Load Data from File into `vector`
+
+## ✅ السيناريو:
+عندك ملف فيه بيانات — مثلاً كل سطر فيه اسم طالب، أو أرقام، أو كلمات.
+
+📁 **students.txt**:
+```
+Sofiane
+Anas
+Youssef
+Laila
+```
+
+---
+
+## ✅ 1. قراءة الأسماء من ملف وتخزينها فـ `vector<string>`
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream file("students.txt");
+    vector<string> names;
+    string name;
+
+    if (file.is_open()) {
+        while (getline(file, name)) {
+            names.push_back(name);  // كل اسم ندخلو فـ vector
+        }
+        file.close();
+    } else {
+        cout << "⚠️ تعذر فتح الملف" << endl;
+    }
+
+    // نعرض المحتوى
+    cout << "📋 لائحة الطلاب:\n";
+    for (string n : names) {
+        cout << "- " << n << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## ✅ 2. نفس الشيء لكن أرقام: `vector<int>`
+
+📁 **numbers.txt**:
+```
+10
+22
+5
+14
+```
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+int main() {
+    ifstream file("numbers.txt");
+    vector<int> numbers;
+    int num;
+
+    if (file.is_open()) {
+        while (file >> num) {
+            numbers.push_back(num);
+        }
+        file.close();
+    }
+
+    // عرض الأرقام
+    for (int n : numbers) {
+        cout << n << " ";
+    }
+
+    return 0;
+}
+```
+
+---
+
+## ✅ 3. كل سطر فيه 2 بيانات: الاسم + العمر
+
+📁 **people.txt**:
+```
+Sofiane 21
+Laila 19
+Anas 25
+```
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+struct Person {
+    string name;
+    int age;
+};
+
+int main() {
+    ifstream file("people.txt");
+    vector<Person> people;
+    string name;
+    int age;
+
+    if (file.is_open()) {
+        while (file >> name >> age) {
+            people.push_back({name, age});
+        }
+        file.close();
+    }
+
+    for (auto p : people) {
+        cout << p.name << " - " << p.age << " سنة" << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## ✅ ملاحظات ذهبية 💡:
+
+| الحالة                     | تستخدمها مع                 |
+|----------------------------|------------------------------|
+| `getline(file, str)`       | سطر كامل (حتى فيه فراغات)     |
+| `file >> val`              | كلمة أو رقم واحد             |
+| `vector.push_back(val)`    | لإضافة عنصر في الـ vector     |
+| `ifstream`                 | لقراءة من الملف              |
+
+---
+
+
