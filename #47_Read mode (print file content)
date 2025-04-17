@@ -1,0 +1,141 @@
+جاي معلم، دابا ندوزو للمرحلة الثانية من التعامل مع الملفات فـ C++:
+
+# 🔷 Files in C++: 📖 **Read Mode** – قراءة من الملف
+
+---
+
+## ✅ المكتبة الأساسية:
+
+```cpp
+#include <fstream>  // ضروري للتعامل مع الملفات
+```
+
+---
+
+## ✅ فتح ملف للقراءة:
+
+```cpp
+ifstream file("data.txt");  // فتح الملف فـ وضع القراءة
+```
+
+---
+
+## ✅ قراءة السطر بـ `getline()`:
+
+```cpp
+string line;
+while (getline(file, line)) {
+    cout << line << endl;
+}
+```
+
+---
+
+## ✅ مثال كامل:
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream file("data.txt");
+
+    if (file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            cout << line << endl;
+        }
+        file.close();
+    } else {
+        cout << "تعذر فتح الملف!" << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## ✅ طريقة أخرى: القراءة كلمة بكلمة
+
+```cpp
+string word;
+while (file >> word) {
+    cout << word << endl;
+}
+```
+
+---
+
+## ✅ طريقة القراءة حرف بحرف:
+
+```cpp
+char ch;
+while (file.get(ch)) {
+    cout << ch;
+}
+```
+
+---
+
+## 🧠 ملاحظات مهمة:
+
+| الطريقة              | واش تقرأ؟       | تستخدم في       |
+|----------------------|------------------|------------------|
+| `getline(file, s)`   | السطر كامل       | ملفات النصوص     |
+| `file >> word`       | كلمة بكلمة       | ملفات مفصولة بـ space |
+| `file.get(ch)`       | حرف بحرف         | قراءة دقيقة جداً  |
+
+---
+
+## ✅ مثال عملي – قراءة ملف مستخدم:
+
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream userFile("user.txt");
+    string line;
+
+    if (userFile.is_open()) {
+        cout << "📄 محتوى الملف:\n";
+        while (getline(userFile, line)) {
+            cout << line << endl;
+        }
+        userFile.close();
+    } else {
+        cout << "⚠️ الملف غير موجود!" << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## ✅ تنسيقات محتملة:
+
+لو الملف فيه معطيات مثل:
+```
+سفيان
+21
+C++
+```
+
+تقدر تقراها هكا:
+
+```cpp
+string name;
+int age;
+string skill;
+
+ifstream file("data.txt");
+file >> name >> age >> skill;
+```
+
+---
+
